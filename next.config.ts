@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-
+  reactStrictMode: true,
+  experimental: {
+    appDir: true,
+  },
   images: {
     domains: [
       'res.cloudinary.com',
@@ -9,7 +11,7 @@ const nextConfig = {
       'wpastra.com',
       'cdn.dribbble.com',
       'placehold.co',
-      'via.placeholder.com'
+      'via.placeholder.com',
     ],
   },
 };
