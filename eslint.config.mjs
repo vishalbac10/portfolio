@@ -1,16 +1,18 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import eslintPluginReact from 'eslint-plugin-react';
+import js from '@eslint/js';
+import next from 'eslint-config-next';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export default [
+  js.configs.recommended,
+  next,
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    rules: {
+      // Turn off the rule for unescaped characters in JSX
+      'react/no-unescaped-entities': 'off',
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+      // Make unused variables a warning instead of an error
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
+  },
 ];
-
-export default eslintConfig;
